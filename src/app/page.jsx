@@ -156,19 +156,19 @@ useEffect(() => {
           handleRelatedRegionClick(place.data.name);
           handleCardClick();
         }}
-        className="place-card w-full bg-lighterBg hover:bg-zinc-800 cursor-pointer h-17 mb-4 rounded-xl flex flex-col md:flex-row justify-start md:justify-between items-start md:items-center p-3 pl-6 md:p-4"
+        className="place-card bg-lighterBg hover:bg-zinc-800 cursor-pointer w-fit mb-4 rounded-xl flex flex-col justify-start items-start p-[15px]"
       >
-        <section className="top flex items-center">
-          <section className="icon h-full w-[50px]">
+        <section className="top flex items-start mb-[15px]">
+          <section className="icon h-full w-[50px] mr-[20px]">
             <i
               className={`${getWeatherIconClass(
                 place.data.weather[0].icon
-              )} text-[35px]`}
+              )} text-[40px]`}
             ></i>
           </section>
 
           <section className="flex ml-2 md:ml-4 flex-col justify-start items-start">
-            <h2 className="mb-1 md:mb-2 text-xl font-bold">
+            <h2 className="mb-[7px] font-bold w-[100px]">
               {place.data.name}
             </h2>
             <p className="text-sm text-[silver]">
@@ -176,7 +176,7 @@ useEffect(() => {
             </p>
           </section>
         </section>
-        <span className="temp mt-2 md:mt-0 text-2xl">
+        <span className="text-[14px]">
           {place.data.main.temp}&deg;c
         </span>
       </section>
@@ -184,7 +184,7 @@ useEffect(() => {
   };
 
   return (
-    <main className="w-full main-section max-w-[2000px] flex justify-between items-start bg-darkBg p-5 relative">
+    <main className="w-full main-section max-w-[2000px] flex flex-col justify-start items-start bg-darkBg p-5 relative">
       {isLoading && <LoadingModal />}
       <section className="w-full left-section md:w-3/5 bg-lighterBg rounded-xl p-4 flex flex-col justify-start items-start">
         <form className="w-full" onSubmit={handleSubmit}>
@@ -192,40 +192,40 @@ useEffect(() => {
             value={location}
             onChange={handleInputChange}
             type="text"
-            className="w-full h-14 rounded-xl p-3 mb-[30px] bg-darkBg text-white text-xl outline-none pl-4 placeholder:text-white placeholder:text-sm"
+            className="w-full h-[40px] rounded-xl p-3 mb-[30px] bg-darkBg text-white text-[14px] outline-none pl-4 placeholder:text-white placeholder:text-[14px]"
             placeholder="Enter a location..."
           />
         </form>
-        <section className="rw flex justify-start items-center w-full pl-[30px] pr-[30px]">
-          <section className="w-data w-full md:w-2/3 h-[250px] flex flex-col justify-start items-start">
+        <section className="rw flex justify-start items-start w-full pl-[5px] pr-[5px]">
+          <section className="w-data w-full md:w-2/3 flex flex-col justify-start items-start">
             <section className="flex flex-col justify-between items-start h-full">
               <section>
-                <h1 className="m-0 mb-4 text-[40px]">
-                  {weatherData ? weatherData?.name : <Loader2 />}
+                <h1 className="m-0 mb-[8px] text-[27px] p-0 max-w-[150px] break-words">
+                  {weatherData ? weatherData?.name : "..."}
                 </h1>
-                <p className="text-[silver]">
+                <p className="text-[silver] text-[14px] mb-[40px]">
                   {weatherDescription ? (
                     firstLetterUpper(weatherDescription)
                   ) : (
-                    <Loader1 />
+                  "..."
                   )}
                 </p>
               </section>
-              <span className="text-[40px] font-bold">
+              <span className="text-[20px] font-bold">
                 {weatherData == null ? (
-                  <Loader3 />
+                  "..."
                 ) : (
                   `${weatherData?.main?.temp}\u00B0c`
                 )}
               </span>
             </section>
           </section>
-          <figure className="w-[300px] h-[300px] relative w-img">
+          <figure className="w-[180px] h-[120px] relative w-img">
             <Image
               alt={"Location weather status image"}
               src={weatherImage}
               fill
-              className="rounded-[50%]"
+              className="rounded-[15px]"
             />
           </figure>
         </section>
@@ -236,9 +236,9 @@ useEffect(() => {
           />
         )}
       </section>
-      <section className="w-[35%] right-section h-fit rounded-xl p-5 flex flex-col justify-start items-start">
-        <h1 className="text-white m-0 mb-10">Related Regions</h1>
-        <section className="flex flex-col w-full places-list">
+      <section className="w-full right-section h-fit rounded-xl mt-[42px] flex flex-col justify-start items-start">
+        <h1 className="text-white text-[27px] m-0 mb-[40px]">Related Regions</h1>
+        <section className="flex flex-col items-center w-full places-list">
           {relatedPlacesData
             ?.filter((place) => place.data.name !== location)
             .map((place, i) => {
