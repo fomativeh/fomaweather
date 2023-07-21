@@ -187,9 +187,9 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full main-section max-w-[2000px] flex flex-col justify-start items-start bg-darkBg p-5 relative">
+    <main className="w-full main-section max-w-[2000px] flex flex-col justify-start items-start md:flex-row md:justify-between md:items-start bg-darkBg p-5 relative">
       {isLoading && <LoadingModal />}
-      <section className="w-full left-section md:w-3/5 bg-lighterBg rounded-xl p-4 flex flex-col justify-start items-start">
+      <section className="w-full md:w-[60vw] left-section bg-lighterBg rounded-xl p-4 flex flex-col justify-start items-start ">
         <form className="w-full" onSubmit={handleSubmit}>
           <input
             value={location}
@@ -200,7 +200,7 @@ export default function Home() {
           />
         </form>
         <section className="rw flex justify-start items-start w-full pl-[5px] pr-[5px]">
-          <section className="w-data w-full md:w-2/3 flex flex-col justify-start items-start">
+          <section className="w-data w-full flex flex-col justify-start items-start">
             <section className="flex flex-col justify-between items-start h-full">
               <section>
                 <h1 className="m-0 mb-[8px] text-[27px] p-0 max-w-[150px] break-words">
@@ -235,7 +235,7 @@ export default function Home() {
           />
         )}
       </section>
-      <section className="w-full right-section h-fit rounded-xl mt-[42px] flex flex-col justify-start items-start">
+      <section className="w-full md:w-[30vw] right-section h-fit rounded-xl mt-[42px] md:mt-[0px] flex flex-col justify-start items-start">
         <h1 className="text-white text-[27px] m-0 mb-[40px]">
           Related Regions
         </h1>
