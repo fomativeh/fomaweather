@@ -56,7 +56,7 @@ const LocationIQMap = ({ latitude, longitude }) => {
   return (
     <section
       ref={mapContainerRef}
-      className="w-full mt-[40px] h-[35vh] rounded-2xl"
+      className="w-full mt-[40px] h-[35vh] max-h-[400px] min-h-[300px] rounded-2xl"
     ></section>
   );
 };
