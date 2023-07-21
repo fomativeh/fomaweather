@@ -12,7 +12,7 @@ import LocationIQMap from "./components/Map/Map";
 import { getWeatherIconClass } from "../../utils/getWeatherIcons";
 import { fetchRelatedRegions } from "./apis/fetchRelatedRegions";
 import LoadingModal from "./components/Loaders/LoadingModal/LoadingModal";
-import "./Styles.scss"
+import "./Styles.scss";
 export default function Home() {
   const [location, setLocation] = useState("");
   const [locationToFind, setLocationToFind] = useState("");
@@ -24,19 +24,19 @@ export default function Home() {
   const [weatherImage, setWeatherImage] = useState(
     "https://icon-library.com/images/weather-icon-sunny/weather-icon-sunny-12.jpg"
   );
-useEffect(() => {
-  // Disable scrolling when isLoading is true
-  if (isLoading) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
-  }
+  useEffect(() => {
+    // Disable scrolling when isLoading is true
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
 
-  // Clean up the event listener when the component unmounts
-  return () => {
-    document.body.style.overflow = "auto";
-  };
-}, [isLoading]);
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isLoading]);
 
   const handleCardClick = () => {
     // Scroll to the top of the page when a card is clicked
@@ -156,10 +156,10 @@ useEffect(() => {
           handleRelatedRegionClick(place.data.name);
           handleCardClick();
         }}
-        className="place-card bg-lighterBg hover:bg-zinc-800 cursor-pointer w-fit mb-4 rounded-xl flex flex-col justify-start items-start p-[15px]"
+        className="place-card bg-lighterBg hover:bg-zinc-800 cursor-pointer w-full mb-4 rounded-xl flex flex-col justify-start items-start p-[15px]"
       >
-        <section className="top flex items-start mb-[15px]">
-          <section className="icon h-full w-[50px] mr-[20px]">
+        <section className="top flex items-start mb-[15px] w-full">
+          <section className="icon h-full w-[50px] mr-[25px]">
             <i
               className={`${getWeatherIconClass(
                 place.data.weather[0].icon
@@ -167,18 +167,21 @@ useEffect(() => {
             ></i>
           </section>
 
-          <section className="flex ml-2 md:ml-4 flex-col justify-start items-start">
-            <h2 className="mb-[7px] font-bold w-[100px]">
+          <section className="w-[65%]">
+            <h2 className="mb-[7px] font-bold break-words">
               {place.data.name}
             </h2>
-            <p className="text-sm text-[silver]">
-              {firstLetterUpper(place.data.weather[0].description)}
-            </p>
           </section>
         </section>
-        <span className="text-[14px]">
-          {place.data.main.temp}&deg;c
-        </span>
+        <section className="flex justify-start items-center w-full">
+          <span className="text-[14px] w-[50px] mr-[25px]">
+            {place.data.main.temp}&deg;c
+          </span>
+
+          <p className="text-[14px] text-[silver]">
+            {firstLetterUpper(place.data.weather[0].description)}
+          </p>
+        </section>
       </section>
     );
   };
@@ -204,19 +207,15 @@ useEffect(() => {
                   {weatherData ? weatherData?.name : "..."}
                 </h1>
                 <p className="text-[silver] text-[14px] mb-[40px]">
-                  {weatherDescription ? (
-                    firstLetterUpper(weatherDescription)
-                  ) : (
-                  "..."
-                  )}
+                  {weatherDescription
+                    ? firstLetterUpper(weatherDescription)
+                    : "..."}
                 </p>
               </section>
               <span className="text-[20px] font-bold">
-                {weatherData == null ? (
-                  "..."
-                ) : (
-                  `${weatherData?.main?.temp}\u00B0c`
-                )}
+                {weatherData == null
+                  ? "..."
+                  : `${weatherData?.main?.temp}\u00B0c`}
               </span>
             </section>
           </section>
@@ -237,7 +236,9 @@ useEffect(() => {
         )}
       </section>
       <section className="w-full right-section h-fit rounded-xl mt-[42px] flex flex-col justify-start items-start">
-        <h1 className="text-white text-[27px] m-0 mb-[40px]">Related Regions</h1>
+        <h1 className="text-white text-[27px] m-0 mb-[40px]">
+          Related Regions
+        </h1>
         <section className="flex flex-col items-center w-full places-list">
           {relatedPlacesData
             ?.filter((place) => place.data.name !== location)
