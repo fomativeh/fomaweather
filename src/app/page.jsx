@@ -189,7 +189,7 @@ export default function Home() {
   return (
     <main className="w-full main-section max-w-[2000px] flex flex-col justify-start items-start md:flex-row md:justify-between md:items-start bg-darkBg p-5 relative">
       {isLoading && <LoadingModal />}
-      <section className="w-full md:w-[60vw] left-section bg-lighterBg rounded-xl p-4 flex flex-col justify-start items-start ">
+      <section className="w-full md:w-[60%] left-section bg-lighterBg rounded-xl p-4 flex flex-col justify-start items-start ">
         <form className="w-full" onSubmit={handleSubmit}>
           <input
             value={location}
@@ -235,7 +235,7 @@ export default function Home() {
           />
         )}
       </section>
-      <section className="w-full md:w-[30vw] right-section h-fit rounded-xl mt-[42px] md:mt-[0px] flex flex-col justify-start items-start">
+      <section className="w-full md:w-[30%] right-section h-fit rounded-xl mt-[42px] md:mt-[0px] flex flex-col justify-start items-start">
         <h1 className="text-white text-[27px] m-0 mb-[40px]">
           Related Regions
         </h1>
